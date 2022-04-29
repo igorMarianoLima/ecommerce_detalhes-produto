@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    border: 0;
+    outline: 0;
+
+    list-style: none;
+    text-decoration: none;
+
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+:root {
+    font-size: 16px;
+}
+
+::selection {
+    background-color: hsl(25, 100%, 94%);
+    color: hsl(219, 9%, 45%);
+}
+
+button {
+    cursor: pointer;
+}
