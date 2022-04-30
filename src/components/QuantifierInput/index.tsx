@@ -8,33 +8,37 @@ interface QuantifierProps {
 }
 
 const QuantifierInput: React.FC<QuantifierProps> = ({amount = 0, setAmount, maxAmount}) => {
-    const [isWarned, setIsWarned] = useState<boolean>(false);
+    const [buttonDisabled, setButtonDisabled] = useState<'NONE' | 'DECREMENT' | 'INCREMENT'>('NONE');
 
     const changeAmount = (typeChange: 'INCREMENT' | 'DECREMENT') => {
         if (typeChange === 'INCREMENT')
         {
             if (maxAmount){
-                amount + 1 <= maxAmount ? setAmount(amount + 1) : setIsWarned(true);
+                amount + 1 <= maxAmount && setAmount(amount + 1);
             } else {
                 setAmount(amount + 1);
             }
         } else {
-            amount > 0 ? setAmount(amount - 1) : setIsWarned(true);
+            amount > 0 && setAmount(amount - 1);
         }
     }
 
     useEffect(() => {
-        if (isWarned)
-        {
-            setTimeout(() => {
-                setIsWarned(false);
-            }, 750)
+        if (amount === maxAmount) {
+            setButtonDisabled('INCREMENT');
+        } else if (amount <= 0) {
+            setButtonDisabled('DECREMENT');
+        } else {
+            setButtonDisabled('NONE');
         }
-    }, [isWarned])
+    }, [amount])
 
     return(
-        <QuantifierContainer isWarned={isWarned}>
-            <ButtonQuantifier onClick={() => changeAmount('DECREMENT')}>
+        <QuantifierContainer>
+            <ButtonQuantifier
+                disabled={buttonDisabled === 'DECREMENT'}
+                onClick={() => changeAmount('DECREMENT')}
+            >
                 -
             </ButtonQuantifier>
 
@@ -42,7 +46,10 @@ const QuantifierInput: React.FC<QuantifierProps> = ({amount = 0, setAmount, maxA
                 <Amount>{amount}</Amount>
             </AmountContainer>
 
-            <ButtonQuantifier onClick={() => changeAmount('INCREMENT')}>
+            <ButtonQuantifier
+                disabled={buttonDisabled === 'INCREMENT'}
+                onClick={() => changeAmount('INCREMENT')}
+            >
                 +
             </ButtonQuantifier>
         </QuantifierContainer>

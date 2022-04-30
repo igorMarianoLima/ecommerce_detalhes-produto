@@ -1,18 +1,12 @@
 import styled from "styled-components";
 import { Colors } from "../../styles/colors";
 
-interface QuantifierProps {
-    isWarned: boolean;
-}
-
-export const QuantifierContainer = styled.div<QuantifierProps>`
+export const QuantifierContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     border-radius: 12px;
-    border: 2px solid transparent;
-    ${props => props.isWarned && 'border-color: '+ Colors.orange.normal};
 
     background-color: ${Colors.lightGrayishBlue};
 
@@ -38,6 +32,12 @@ export const ButtonQuantifier = styled.button`
     background-color: transparent;
 
     color: ${Colors.orange.normal};
+
+    &:disabled {
+        opacity: 0;
+    }
+
+    transition: opacity linear .2s;
 `;
 
 export const AmountContainer = styled.div`
