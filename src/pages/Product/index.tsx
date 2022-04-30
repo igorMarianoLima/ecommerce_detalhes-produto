@@ -16,6 +16,7 @@ import {
     ImagesList,
     InformationsContainer,
     LinePrices,
+    MiniatureWrap,
     OldPrice,
     PricesContainer,
     ProductContainer,
@@ -107,17 +108,22 @@ const Product: React.FC = () => {
                         <ImagesContainer>
                             <ActualImage
                                 src={ProductInfo.images[actualImageIndex]}
+                                title="Abrir imagem"
                                 onClick={() => setIsModalOpen(true)}
                             />
 
                             <ImagesList>
                                 {ProductInfo.images.map((image, index) =>
-                                    <ImageMiniature
+                                    <MiniatureWrap
                                         key={index}
-                                        src={image}
-                                        isShowing={actualImageIndex === index}
-                                        onClick={() => setActualImageIndex(index)}
-                                    />
+                                    >
+                                        <ImageMiniature
+                                            src={image}
+                                            title={actualImageIndex === index ? "Imagem selecionada" : 'Mostrar imagem'}
+                                            isShowing={actualImageIndex === index}
+                                            onClick={() => setActualImageIndex(index)}
+                                        />
+                                    </MiniatureWrap>
                                 )}
                             </ImagesList>
                         </ImagesContainer>

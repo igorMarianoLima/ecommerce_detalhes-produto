@@ -82,6 +82,12 @@ interface ImageMiniatureProps {
     src: string;
 }
 
+export const MiniatureWrap = styled.li`
+    &:not(:first-of-type) {
+        margin-left: 16px;
+    }
+`;
+
 export const ImageMiniature = styled.button<ImageMiniatureProps>`
     ${props => !props.isShowing && "cursor: pointer"};
 
@@ -99,10 +105,6 @@ export const ImageMiniature = styled.button<ImageMiniatureProps>`
     ${props => props.isShowing && "border: 4px solid "+ Colors.orange.normal + 'cc'};
 
     transition: all .4s;
-
-    &:not(:first-of-type) {
-        margin-left: 16px;
-    }
 `;
 
 export const InformationsContainer = styled.section``;

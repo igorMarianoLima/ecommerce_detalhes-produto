@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
         <Container>
             <HeaderContainer>
                 <Navigator>
-                    <Logo src={LogoImage} />
+                    <Logo title="Sneaker's Logo" src={LogoImage} />
 
                     <LinksContainer>
                         <LinkContainer>
@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
 
                 <ProfileLinks>
                     <CartButtonContainer>
-                        <CartButton onClick={() => setIsCartVisible(!isCartVisible)}>
+                        <CartButton title="Abrir carrinho" onClick={() => setIsCartVisible(!isCartVisible)}>
                             <Cart />
                             <ItensAmountContainer>
                                 {items.length}
@@ -68,7 +68,7 @@ const Navbar: React.FC = () => {
                         <CartModal isVisible={isCartVisible} />
                     </CartButtonContainer>
                     
-                    <ProfileAvatar />
+                    <ProfileAvatar title="Ir para Perfil" />
                 </ProfileLinks>
             </HeaderContainer>
         </Container>
