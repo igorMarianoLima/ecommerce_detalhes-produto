@@ -21,7 +21,14 @@ const CartModal: React.FC<CartModalProps> = ({isVisible, setIsVisible}) => {
                 <>
                     {items.map((item) => {
                         return(
-                            <Product id={item.id} name={item.name} amount={item.amount} pricePerUnit={0} totalPrice={item.totalPrice} />
+                            <Product
+                                key={item.id}
+                                id={item.id}
+                                name={item.name}
+                                amount={item.amount}
+                                pricePerUnit={0}
+                                totalPrice={item.totalPrice}
+                            />
                         )
                     })}
                 </>
