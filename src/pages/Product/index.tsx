@@ -126,11 +126,14 @@ const Product: React.FC = () => {
                             />
 
                             <ImagesList>
-                                {ProductInfo.images.map((image, index) =>       <ImageMiniature
-                                    key={index}
-                                    src={image}
-                                    onClick={() => setActualImageIndex(index)}
-                                />)}
+                                {ProductInfo.images.map((image, index) =>
+                                    <ImageMiniature
+                                        key={index}
+                                        src={image}
+                                        isShowing={actualImageIndex === index}
+                                        onClick={() => setActualImageIndex(index)}
+                                    />
+                                )}
                             </ImagesList>
                         </ImagesContainer>
 

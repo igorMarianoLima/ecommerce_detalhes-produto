@@ -96,7 +96,9 @@ export const ImageMiniature = styled.button<ImageMiniatureProps>`
     background-image: url(${props => props.src});
     background-size: cover;
     
-    ${props => props.isShowing && "border: 2px solid "+ Colors.orange.normal + 'cc'};
+    ${props => props.isShowing && "border: 4px solid "+ Colors.orange.normal + 'cc'};
+
+    transition: all .4s;
 
     &:not(:first-of-type) {
         margin-left: 16px;
