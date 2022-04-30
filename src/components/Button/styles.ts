@@ -42,4 +42,8 @@ export const StyledButton = styled.button<ButtonProps>`
     }
 
     transition: background-color .75s;
+
+    @media screen and (max-width: 375px) {
+        padding: 8px 28px;
+    }
 `;

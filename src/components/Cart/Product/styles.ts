@@ -16,7 +16,7 @@ export const MainInformations = styled.div`
 `;
 
 export const ProductName = styled.p`
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 700;
 
     margin-right: 24px;
@@ -30,7 +30,7 @@ export const ProductAmount = styled.p`
     min-height: 24px;
     height: 24px;
 
-    font-size: 12px;
+    font-size: 0.85rem;
 
     display: flex;
     align-items: center;
@@ -41,6 +41,13 @@ export const ProductAmount = styled.p`
     background-color: ${Colors.mediumGreen};
 
     color: ${Colors.lightGrayishBlue};
+
+    @media screen and (max-width: 375px){
+        min-width: 20px;
+        width: 20px;
+        min-height: 20px;
+        height: 20px;
+    }
 `;
 
 export const ProductPrice = styled.p`
@@ -51,7 +58,7 @@ export const ProductPrice = styled.p`
     margin: 8px 0;
 
     text-align: left;
-    font-size: 14px;
+    font-size: 0.95rem;
     font-weight: 700;
 
     color: ${Colors.grayishBlue};
