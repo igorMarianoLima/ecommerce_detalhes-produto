@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import Modal from "../";
+
 import {
     ModalWrap,
     ButtonChangeImage,
@@ -19,6 +20,7 @@ interface ImageViewerModalProps {
 
     imagesOptions: ImagesProps;
 }
+
 
 const ImageViewer: React.FC<ImageViewerModalProps> = ({
     imagesOptions,
@@ -44,7 +46,16 @@ const ImageViewer: React.FC<ImageViewerModalProps> = ({
                 justifyContent: 'CENTER',
             }}
         >
-            <ModalWrap>
+            <ModalWrap
+                animate={{
+                    transform: `translateX(${isVisible ? 0 : -200}%)`,
+                }}
+
+                transition={{
+                    type: 'spring',
+                    duration: 0.8,
+                }}
+            >
                 <ButtonChangeImage
                     onClick={() => changeImage('PREVIOUS')}
                 >

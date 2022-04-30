@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import {motion} from 'framer-motion';
+import { Colors } from "../../../styles/colors";
 
 
-export const ModalWrap = styled.div`
+export const ModalWrap = styled(motion.div)`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,10 +25,12 @@ export const ButtonChangeImage = styled.button`
 
     &:first-of-type {
         transform: translateX(+25%);
+        box-shadow: 4px 4px 2px ${Colors.darkGrayishBlue}4c;
     }
 
     &:last-of-type {
         transform: translateX(-25%);
+        box-shadow: -4px 4px 2px ${Colors.darkGrayishBlue}4c;
     }
 
     &:active {
