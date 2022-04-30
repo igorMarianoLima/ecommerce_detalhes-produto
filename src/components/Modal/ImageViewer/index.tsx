@@ -1,3 +1,4 @@
+import { AnimatePresence } from "framer-motion";
 import React, { Dispatch, SetStateAction } from "react";
 import Modal from "../";
 
@@ -47,28 +48,23 @@ const ImageViewer: React.FC<ImageViewerModalProps> = ({
             }}
         >
             <ModalWrap
-                animate={{
-                    transform: `translateX(${isVisible ? 0 : -200}%)`,
+                initial={{
+                    translateX: "-200%",
                 }}
-
-                transition={{
-                    type: 'spring',
-                    duration: 0.8,
+                animate={{
+                    translateX: 0,
+                }}
+                exit={{
+                    translateX: "-200%",
                 }}
             >
-                <ButtonChangeImage
-                    onClick={() => changeImage('PREVIOUS')}
-                >
+                <ButtonChangeImage onClick={() => changeImage('PREVIOUS')}>
                     <i className="fa-solid fa-chevron-left"></i>
                 </ButtonChangeImage>
 
-                <ImageModal
-                    src={imagesOptions.images[imagesOptions.actualImageIndex]}
-                />
+                <ImageModal src={imagesOptions.images[imagesOptions.actualImageIndex]} />
 
-                <ButtonChangeImage
-                    onClick={() => changeImage('NEXT')}
-                >
+                <ButtonChangeImage onClick={() => changeImage('NEXT')}>
                     <i className="fa-solid fa-chevron-right"></i>
                 </ButtonChangeImage>
             </ModalWrap>

@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion';
 import React, { Dispatch, PropsWithChildren, SetStateAction, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -18,7 +19,14 @@ interface ModalProps {
     configs?: ModalContainerProps;
 }
 
-const Modal: React.FC<PropsWithChildren<ModalProps>> = ({children, isVisible, setIsVisible, onOpen, onClose, configs}) => {
+const Modal: React.FC<PropsWithChildren<ModalProps>> = ({
+    children,
+    isVisible,
+    setIsVisible,
+    onOpen,
+    onClose,
+    configs
+}) => {
     const body = document.body;
 
     useEffect(() => {
@@ -27,15 +35,18 @@ const Modal: React.FC<PropsWithChildren<ModalProps>> = ({children, isVisible, se
 
     return(
         createPortal(
-            <ModalWrap
-                isVisible={isVisible}
-            >
-                <CloseModalArea onClick={() => setIsVisible(false)} />
-
-                <ModalContainer {...configs}>
-                    {children}
-                </ModalContainer>
-            </ModalWrap>,
+            <AnimatePresence>
+                {isVisible && (
+                    <ModalWrap>
+                        <CloseModalArea onClick={() => setIsVisible(false)} />
+        
+                        <ModalContainer {...configs}>
+                            {children}
+                        </ModalContainer>
+                    </ModalWrap>
+                )}
+            
+            </AnimatePresence>,
             body
         )
     )

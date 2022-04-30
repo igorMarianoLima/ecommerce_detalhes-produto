@@ -34,6 +34,7 @@ import Product1 from '../../assets/images/pages/Product/image-product-1.jpg';
 import Product2 from '../../assets/images/pages/Product/image-product-2.jpg';
 import Product3 from '../../assets/images/pages/Product/image-product-3.jpg';
 import Product4 from '../../assets/images/pages/Product/image-product-4.jpg';
+import { isVisible } from '@testing-library/user-event/dist/utils';
 
 interface PriceProps {
     oldPrice?: number;
@@ -188,6 +189,7 @@ const Product: React.FC = () => {
                     setActualImageIndex: setActualImageIndex,
                 }}
             />
+            
         </>
     )
 }

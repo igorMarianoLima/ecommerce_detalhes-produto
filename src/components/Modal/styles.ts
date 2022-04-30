@@ -1,12 +1,21 @@
 import styled from "styled-components";
+
+import {motion} from 'framer-motion';
+
 import { ModalContainerProps } from "./";
 import { Colors } from "../../styles/colors";
 
-interface ModalProps {
-    isVisible: boolean;
-}
+export const ModalWrap = styled(motion.div).attrs({
+    initials: {
+        translateY: "-50%",
+        translateX: "-50%",
+        opacity: 1,
+    },
 
-export const ModalWrap = styled.div<ModalProps>`
+    exit: {
+        opacity: 0,
+    }
+})`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,7 +31,6 @@ export const ModalWrap = styled.div<ModalProps>`
     width: 100%;
     height: 100%;
 
-    visibility: ${props => props.isVisible ? 'visible' : 'hidden'};
 
     background-color: ${Colors.darkGrayishBlue}cf;
 `;
