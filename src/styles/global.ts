@@ -18,7 +18,7 @@ export const Main = styled.main`
     padding: 80px 5%;
 
     @media screen and (max-width: 375px){
-        padding: 60px 0;
+        padding: 40px 0;
     }
 `;
 

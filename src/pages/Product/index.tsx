@@ -4,20 +4,18 @@ import { HandleCurrency } from '../../utils/HandleCurrency';
 
 import Button from '../../components/Button';
 import QuantifierInput from '../../components/QuantifierInput';
+import ImageViewer from '../../components/Modal/ImageViewer';
 import { Cart } from '../../components/Icons';
 
 import { Container, Main, SneakersText } from '../../styles/global';
 import {
     ActualImage,
-    ButtonChangeImage,
     ButtonsContainer,
     ImageMiniature,
-    ImageModal,
     ImagesContainer,
     ImagesList,
     InformationsContainer,
     LinePrices,
-    ModalWrap,
     OldPrice,
     PricesContainer,
     ProductContainer,
@@ -36,7 +34,6 @@ import Product1 from '../../assets/images/pages/Product/image-product-1.jpg';
 import Product2 from '../../assets/images/pages/Product/image-product-2.jpg';
 import Product3 from '../../assets/images/pages/Product/image-product-3.jpg';
 import Product4 from '../../assets/images/pages/Product/image-product-4.jpg';
-import Modal from '../../components/Modal';
 
 interface PriceProps {
     oldPrice?: number;
@@ -101,19 +98,6 @@ const Product: React.FC = () => {
         return;
     }
 
-    const openImageOnModal = () => {
-        setIsModalOpen(true);
-    }
-
-    const changeImage = (typeChange: 'NEXT' | 'PREVIOUS') => {
-        if (typeChange === 'NEXT')
-        {
-            actualImageIndex + 1 < ProductInfo.images.length ? setActualImageIndex(actualImageIndex + 1) : setActualImageIndex(0);
-        } else {
-            actualImageIndex - 1 >= 0 ? setActualImageIndex(actualImageIndex - 1) : setActualImageIndex(ProductInfo.images.length - 1);
-        }
-    }
-
     return(
         <>
             <Main>
@@ -122,7 +106,7 @@ const Product: React.FC = () => {
                         <ImagesContainer>
                             <ActualImage
                                 src={ProductInfo.images[actualImageIndex]}
-                                onClick={() => openImageOnModal()}
+                                onClick={() => setIsModalOpen(true)}
                             />
 
                             <ImagesList>
@@ -195,25 +179,15 @@ const Product: React.FC = () => {
                 </Container>
             </Main>
 
-            <Modal
+            <ImageViewer
                 isVisible={isModalOpen}
                 setIsVisible={setIsModalOpen}
-                configs={{
-                    justifyContent: 'CENTER',
+                imagesOptions={{
+                    images: ProductInfo.images,
+                    actualImageIndex: actualImageIndex,
+                    setActualImageIndex: setActualImageIndex,
                 }}
-            >
-                <ModalWrap>
-                    <ButtonChangeImage onClick={() => changeImage('PREVIOUS')}>
-                        <i className="fa-solid fa-chevron-left"></i>
-                    </ButtonChangeImage>
-
-                    <ImageModal src={ProductInfo.images[actualImageIndex]} />
-
-                    <ButtonChangeImage onClick={() => changeImage('NEXT')}>
-                        <i className="fa-solid fa-chevron-right"></i>
-                    </ButtonChangeImage>
-                </ModalWrap>
-            </Modal>
+            />
         </>
     )
 }
