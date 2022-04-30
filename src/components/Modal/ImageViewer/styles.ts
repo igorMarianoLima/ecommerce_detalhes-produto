@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const ModalWrap = styled.div`
     display: flex;
     align-items: center;
+    justify-content: center;
 `;
 
 export const ButtonChangeImage = styled.button`
@@ -12,7 +13,9 @@ export const ButtonChangeImage = styled.button`
     justify-content: center;
 
     width: 60px;
+    min-width: 60px;
     height: 60px;
+    min-height: 60px;
 
     background-color: #fff;
 
@@ -31,6 +34,13 @@ export const ButtonChangeImage = styled.button`
     }
 
     transition: filter .4s;
+
+    @media screen and (max-width: 375px) {
+        width: 32px;
+        min-width: 32px;
+        height: 32px;
+        min-height: 32px;
+    }
 `;
 
 export const ImageModal = styled.img`
@@ -38,4 +48,8 @@ export const ImageModal = styled.img`
     width: 85%;
 
     border-radius: 20px;
+
+    @media screen and (max-width: 375px) {
+        width: 75%;
+    }
 `;
