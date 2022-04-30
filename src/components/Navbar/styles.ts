@@ -9,6 +9,10 @@ export const HeaderContainer = styled.header`
     padding: 32px 0;
 
     box-shadow: 0 2px ${Colors.lightGray + '1f'};
+
+    @media screen and (max-width: 375px){
+        padding: 16px 0;
+    }
 `;
 
 export const Navigator = styled.nav`
@@ -82,6 +86,12 @@ export const ProfileAvatar = styled.button`
     border-radius: 50%;
 
     background-color: ${Colors.lightGray};
+
+
+    @media screen and (max-width: 375px){
+        height: 40px;
+        width: 40px;
+    }
 `;
 
 export const CartButtonContainer = styled.div`
@@ -125,4 +135,13 @@ export const ItensAmountContainer = styled.div`
 
     background-color: ${Colors.orange.normal};
     color: ${Colors.paleOrange};
+
+    @media screen and (max-width: 375px){
+        top: 0;
+
+        height: 16px;
+        width: 16px;
+
+        font-size: 10px;
+    }
 `;
