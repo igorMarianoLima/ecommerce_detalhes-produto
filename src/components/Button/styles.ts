@@ -26,7 +26,7 @@ export const StyledButton = styled.button<ButtonProps>`
     border-radius: 12px;
 
     font-weight: 700;
-    font-size: 14px;
+    font-size: 1rem;
     color: ${props => ButtonStyles[props.buttonType].color};
 
     & svg {

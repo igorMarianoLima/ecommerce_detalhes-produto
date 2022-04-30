@@ -29,3 +29,9 @@ button {
 button:disabled {
     cursor: default;
 }
+
+@media screen and (max-width: 375px){
+    :root {
+        font-size: 12px;
+    }
+}

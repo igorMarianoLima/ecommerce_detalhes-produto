@@ -168,7 +168,7 @@ export const ProductDiscount = styled.div`
 
     color: ${Colors.orange.normal};
     font-weight: 700;
-    font-size: 14px;
+    font-size: 0.85rem;
 
     background-color: ${Colors.paleOrange};
 
